@@ -7,6 +7,9 @@ import RouterPropTestResult from "./routes/RouterPropTestResult";
 import Layout from "./routes/Layout";
 import StudentList from "./routes/StudentList";
 import StudentDetail from "./routes/StudentDetail";
+import UseStateTest from "./routes/UseStateTest";
+import ReduxTest from "./routes/ReduxTest";
+import ReduxToolkitTest from "./routes/ReduxToolkitTest";
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
                   {/*Router v6부터 exact 없어지고 Routes 쓰면 정확히 path가 일치 하는 컴포넌트만 랜더링됨.
                   같은 경로 하위에 랜더링 시키고 싶으면 /student/* 사용하면 된다.*/}
                   <Route path="/student/detail/:id" element={<StudentDetail /> } />
+                  <Route path="/state/test" element={<UseStateTest />} />
+                  <Route path="/redux/test" element={<ReduxTest />} />
+                  <Route path="/redux/toolkit/test" element={<ReduxToolkitTest />} />
               </Routes>
           </Layout>
       </>

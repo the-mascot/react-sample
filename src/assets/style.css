@@ -1,0 +1,45 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#root {
+    height: 100%;
+}
+
+header {
+    min-height: 50px;
+    background-color: antiquewhite;
+    padding: 0;
+}
+
+nav {
+    min-height: 50px;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.navList {
+    display: flex;
+}
+
+.navList li {
+    margin-right: 30px;
+}
+
+main {
+    height: 70%;
+    min-height: 400px;
+}
+
+footer {
+    min-height: 100px;
+    background-color: beige;
+}
+
+
+

@@ -1,18 +1,17 @@
 import "../assets/redux-test.css"
-import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {toolDecrease, toolIncrease, toolIncreaseByCount} from "../slice/ReduxToolkitSlice";
+import {ToolRootState} from "../toolkitStore";
 
-export default function ReduxTest() {
+export default function ReduxToolkitTest() {
 
-    const [number, setNumber] = useState(1);
     return (
         <div className="redux-test-wrap">
             <h1>Redux Toolkit Test</h1>
-            <h2>Root : {number}</h2>
+            <h2>Root : </h2>
             <div className="grid">
-                <Left1 number={number} />
-                <Right1 onIncrease={() => { setNumber(number + 1); }} />
+                <Left1 />
+                <Right1 />
             </div>
         </div>
     );
@@ -21,26 +20,24 @@ export default function ReduxTest() {
 function Left1(props: any) {
     return (
         <div>
-            <h2>Left1 : {props.number}</h2>
-            <Left2 number={props.number} />
+            <h2>Left1 : {}</h2>
+            <Left2 />
         </div>
     );
 }
 
 function Left2(props: any) {
-    console.log('Left2');
     return (
         <div>
-            <h2>Left2 : {props.number}</h2>
-            <Left3 number={props.number} />
+            <h2>Left2 : {}</h2>
+            <Left3 />
         </div>
     );
 }
 
 function Left3(props: any) {
-    console.log('Left3');   // redux를 이용하면 리랜더링 되는 컴포넌트만 호출됨.
     // useSelect로 state 가져 올 수 있다.
-    const number = useSelector((state: any) => state.number);
+    const number = useSelector((state: ToolRootState) => state.reduxToolkit.number);
     return (
         <div>
             <h2>Left3 : {number}</h2>
@@ -48,29 +45,25 @@ function Left3(props: any) {
     );
 }
 
-function Right1(props: any) {
+function Right1() {
     return (
         <div>
             <h2>Right1</h2>
-            <Right2 onIncrease={() => {
-                props.onIncrease();
-            }} />
+            <Right2 />
         </div>
     );
 }
 
-function Right2(props: any) {
+function Right2() {
     return (
         <div>
             <h2>Right2</h2>
-            <Right3 onIncrease={() => {
-                props.onIncrease();
-            }} />
+            <Right3 />
         </div>
     );
 }
 
-function Right3(props: any) {
+function Right3() {
     const style = {
         margin: "10px 10px",
         width: "60px",
@@ -82,9 +75,9 @@ function Right3(props: any) {
     return (
         <div>
             <h2>Right3</h2>
-            <input type="button" value="+2" style={style} />
-            <input type="button" value="+"  style={style} />
-            <input type="button" value="-" style={style} />
+            <input type="button" value="+2" onClick={() => dispatch(toolIncreaseByCount({ count: 5 }))} style={style} />
+            <input type="button" value="+" onClick={() => dispatch(toolIncrease({}))} style={style} />
+            <input type="button" value="-" onClick={() => dispatch(toolDecrease({}))} style={style} />
         </div>
     );
 }

@@ -1,11 +1,12 @@
 import {combineReducers} from "redux";
 import reduxTestReducer from "./reduxTestReducer";
 
+/* combineReducer 로 여러 reducer 등록 */
 const rootReducer = combineReducers({
-    reduxTest: reduxTestReducer
+    reduxTestReducer
 });
 
-// rootReducer store 에 등록을 위해 export
+// rootReducer 를 store 에 등록을 위해 export
 export default rootReducer;
 
 // rootReducer 의 반환 값을 유추해준다.
